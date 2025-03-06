@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRATORES - PRONAF AGRO PF</title>
+    <style>
+        /* Definindo o estilo básico para o corpo da página */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Estilizando o cabeçalho */
+        h1, h2, h3 {
+            color: #2c3e50;
+        }
+
+        h1 {
+            background-color: #3498db;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            text-align: center;
+            color: #16a085;
+        }
+
+        h3 {
+            margin-top: 20px;
+            color: #34495e;
+        }
+
+        /* Adicionando uma borda e espaçamento entre os inputs e labels */
+        label {
+            font-size: 16px;
+            margin-right: 15px;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Botão de envio */
+        button {
+            background-color: #2ecc71;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #27ae60;
+        }
+
+        /* Estilo para os campos de texto */
+        textarea {
+            resize: vertical;
+        }
+
+        /* Formatação do formulário */
+        form {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Distância entre seções */
+        .section {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+    <h1> Dados da proposta </h1>
+    <h2>Responda com "Sim", "Não" ou "Alterado"</h2>
+
+    <form method="POST">
+        <h3>Periodicidade Anual?</h3>
+        <input type="radio" id="sim1" name="pergunta1" value="Sim">
+        <label for="sim1">Sim</label>
+        <input type="radio" id="nao1" name="pergunta1" value="Não">
+        <label for="nao1">Não</label>
+        <input type="radio" id="alterado1" name="pergunta1" value="Alterado">
+        <label for="alterado1">Alterado</label><br><br>
+
+        <h3>Periodicidade Mensal?</h3>
+        <input type="radio" id="sim2" name="pergunta2" value="Sim"  >
+        <label for="sim2">Sim</label>
+        <input type="radio" id="nao2" name="pergunta2" value="Não">
+        <label for="nao2">Não</label>
+        <input type="radio" id="alterado2" name="pergunta2" value="Alterado">
+        <label for="alterado2">Alterado</label><br><br>
+
+        <h3>Cálculo de Parcelas preenchido?</h3>
+        <input type="radio" id="sim3" name="pergunta3" value="Sim"  >
+        <label for="sim3">Sim</label>
+        <input type="radio" id="nao3" name="pergunta3" value="Não">
+        <label for="nao3">Não</label>
+        <input type="radio" id="alterado3" name="pergunta3" value="Alterado">
+        <label for="alterado3">Alterado</label><br><br>
+
+        <h3>Taxa pré-fixada?</h3>
+        <input type="radio" id="sim4" name="pergunta4" value="Sim"  >
+        <label for="sim4">Sim</label>
+        <input type="radio" id="nao4" name="pergunta4" value="Não">
+        <label for="nao4">Não</label>
+        <input type="radio" id="alterado4" name="pergunta4" value="Alterado">
+        <label for="alterado4">Alterado</label><br><br>
+
+        <h3>Taxa 5%?</h3>
+        <input type="radio" id="sim5" name="pergunta5" value="Sim"  >
+        <label for="sim5">Sim</label>
+        <input type="radio" id="nao5" name="pergunta5" value="Não">
+        <label for="nao5">Não</label>
+        <input type="radio" id="alterado5" name="pergunta5" value="Alterado">
+        <label for="alterado5">Alterado</label><br><br>
+
+        <h3>Seguro prestamista preenchido?</h3>
+        <input type="radio" id="sim6" name="pergunta6" value="Sim"  >
+        <label for="sim6">Sim</label>
+        <input type="radio" id="nao6" name="pergunta6" value="Não">
+        <label for="nao6">Não</label>
+        <input type="radio" id="alterado6" name="pergunta6" value="Alterado">
+        <label for="alterado6">Alterado</label><br><br>
+
+        <h3>Possui avalista(s)?</h3>
+        <input type="radio" id="sim7" name="pergunta7" value="Sim"  >
+        <label for="sim7">Sim</label>
+        <input type="radio" id="nao7" name="pergunta7" value="Não">
+        <label for="nao7">Não</label>
+        <input type="radio" id="alterado7" name="pergunta7" value="Alterado">
+        <label for="alterado7">Alterado</label><br><br>
+
+        <h3>O cadastro do(s) avalistas está atualizado para 2025?</h3>
+        <input type="radio" id="sim8" name="pergunta8" value="Sim"  >
+        <label for="sim8">Sim</label>
+        <input type="radio" id="nao8" name="pergunta8" value="Não">
+        <label for="nao8">Não</label>
+        <input type="radio" id="alterado8" name="pergunta8" value="Alterado">
+        <label for="alterado8">Alterado</label><br><br>
+        <h3>Informações adicionais</h3>
+        <textarea id="informacoes_adicionais" name="informacoes_adicionais" rows="4" cols="50" placeholder="Digite suas informações adicionais aqui..."></textarea><br><br>
+
+
+        <h1> Painel do beneficiário </h1>
+
+        <h3>DAP válida?</h3>
+        <input type="radio" id="sim9" name="pergunta9" value="Sim"  >
+        <label for="sim9">Sim</label>
+        <input type="radio" id="nao9" name="pergunta9" value="Não">
+        <label for="nao9">Não</label>
+        <input type="radio" id="alterado9" name="pergunta9" value="Alterado">
+        <label for="alterado9">Alterado</label><br><br>
+
+        <h3>Até 4 módulos fiscais?</h3>
+        <input type="radio" id="sim10" name="pergunta10" value="Sim"  >
+        <label for="sim10">Sim</label>
+        <input type="radio" id="nao10" name="pergunta10" value="Não">
+        <label for="nao10">Não</label>
+        <input type="radio" id="alterado10" name="pergunta10" value="Alterado">
+        <label for="alterado10">Alterado</label><br><br>
+
+        <h3>Renda menor que 500 mil?</h3>
+        <input type="radio" id="sim11" name="pergunta11" value="Sim"  >
+        <label for="sim11">Sim</label>
+        <input type="radio" id="nao11" name="pergunta11" value="Não">
+        <label for="nao11">Não</label>
+        <input type="radio" id="alterado11" name="pergunta11" value="Alterado">
+        <label for="alterado11">Alterado</label><br><br>
+
+        <h3>Precisa e tem parecer negocial</h3>
+        <input type="radio" id="sim12" name="pergunta12" value="Sim"  >
+        <label for="sim12">Sim</label>
+        <input type="radio" id="nao12" name="pergunta12" value="Não">
+        <label for="nao12">Não</label>
+        <input type="radio" id="alterado12" name="pergunta12" value="Alterado">
+        <label for="alterado12">Alterado</label><br><br>
+
+        <h3>Cadastro atualizado em 2025?</h3>
+        <input type="radio" id="sim13" name="pergunta13" value="Sim"  >
+        <label for="sim13">Sim</label>
+        <input type="radio" id="nao13" name="pergunta13" value="Não">
+        <label for="nao13">Não</label>
+        <input type="radio" id="alterado13" name="pergunta13" value="Alterado">
+        <label for="alterado13">Alterado</label><br><br>
+        <h3>Informações adicionais</h3>
+        <textarea id="informacoes_adicionais2" name="informacoes_adicionais2" rows="4" cols="50" placeholder="Digite suas informações adicionais aqui..."></textarea><br><br>
+        <h1> Áreas beneficiadas </h1>
+
+        <h3>As matrículas estão sendo espelhadas no MUA?</h3>
+        <input type="radio" id="sim14" name="pergunta14" value="Sim"  >
+        <label for="sim14">Sim</label>
+        <input type="radio" id="nao14" name="pergunta14" value="Não">
+        <label for="nao14">Não</label>
+        <input type="radio" id="alterado14" name="pergunta14" value="Alterado">
+        <label for="alterado14">Alterado</label><br><br>
+
+        <h3>A área beneficiada é menor ou igual no MUA?</h3>
+        <input type="radio" id="sim15" name="pergunta15" value="Sim"  >
+        <label for="sim15">Sim</label>
+        <input type="radio" id="nao15" name="pergunta15" value="Não">
+        <label for="nao15">Não</label>
+        <input type="radio" id="alterado15" name="pergunta15" value="Alterado">
+        <label for="alterado15">Alterado</label><br><br>
+
+        <h3>Alguma matrícula é arrendada?</h3>
+        <input type="radio" id="sim16" name="pergunta16" value="Sim"  >
+        <label for="sim16">Sim</label>
+        <input type="radio" id="nao16" name="pergunta16" value="Não">
+        <label for="nao16">Não</label>
+        <input type="radio" id="alterado16" name="pergunta16" value="Alterado">
+        <label for="alterado16">Alterado</label><br><br>
+        <h3>Informações adicionais</h3>
+<textarea id="informacoes_adicionais3" name="informacoes_adicionais3" rows="4" cols="50" placeholder="Digite suas informações adicionais aqui..."></textarea><br><br>
+
+        <h1> Documentação</h1>
+        <h2> CAR </h2>
+
+        <h3>Todos os CAR das áreas beneficiadas estão presentes?</h3>
+        <input type="radio" id="sim17" name="pergunta17" value="Sim"  >
+        <label for="sim17">Sim</label>
+        <input type="radio" id="nao17" name="pergunta17" value="Não">
+        <label for="nao17">Não</label>
+        <input type="radio" id="alterado17" name="pergunta17" value="Alterado">
+        <label for="alterado17">Alterado</label><br><br>
+
+        <h3>Área consolidada zerada?</h3>
+        <input type="radio" id="sim18" name="pergunta18" value="Sim"  >
+        <label for="sim18">Sim</label>
+        <input type="radio" id="nao18" name="pergunta18" value="Não">
+        <label for="nao18">Não</label>
+        <input type="radio" id="alterado18" name="pergunta18" value="Alterado">
+        <label for="alterado18">Alterado</label><br><br>    
+
+        <h3>Área consolidada menor do que a área beneficiada?</h3>
+        <input type="radio" id="sim19" name="pergunta19" value="Sim"  >
+        <label for="sim19">Sim</label>
+        <input type="radio" id="nao19" name="pergunta19" value="Não">
+        <label for="nao19">Não</label>
+        <input type="radio" id="alterado19" name="pergunta19" value="Alterado">
+        <label for="alterado19">Alterado</label><br><br>
+        <h3>Informações adicionais</h3>
+        <textarea id="informacoes_adicionais4" name="informacoes_adicionais4" rows="4" cols="50" placeholder="Digite suas informações adicionais aqui..."></textarea><br><br>
+
+        <h2> CND </h2>
+        <h3>Há uma CND com validade mínima de 45 dias no nome e CPF do associado?</h3>
+        <input type="radio" id="sim20" name="pergunta20" value="Sim"  >
+        <label for="sim20">Sim</label>
+        <input type="radio" id="nao20" name="pergunta20" value="Não">
+        <label for="nao20">Não</label>
+        <input type="radio" id="alterado20" name="pergunta20" value="Alterado">
+        <label for="alterado20">Alterado</label><br><br>
+        <h3>Informações adicionais</h3>
+        <textarea id="informacoes_adicionais5" name="informacoes_adicionais5" rows="4" cols="50" placeholder="Digite suas informações adicionais aqui..."></textarea><br><br>
+        <h2> Protec </h2>
+        <h3>Nome e CPF do associado?</h3>
+        <input type="radio" id="sim21" name="pergunta21" value="Sim"  >
+        <label for="sim21">Sim</label>
+        <input type="radio" id="nao21" name="pergunta21" value="Não">
+        <label for="nao21">Não</label>
+        <input type="radio" id="alterado21" name="pergunta21" value="Alterado">
+        <label for="alterado21">Alterado</label><br><br>
+        
+        <h3>As áreas beneficiadas são as mesmas do digiagro?</h3>
+        <input type="radio" id="sim22" name="pergunta22" value="Sim"  >
+        <label for="sim22">Sim</label>
+        <input type="radio" id="nao22" name="pergunta22" value="Não">
+        <label for="nao22">Não</label>
+        <input type="radio" id="alterado22" name="pergunta22" value="Alterado">
+        <label for="alterado22">Alterado</label><br><br>
+        
+        <h3>A operação traz melhorias ao produtor/propriedade?</h3>
+        <input type="radio" id="sim23" name="pergunta23" value="Sim"  >
+        <label for="sim23">Sim</label>
+        <input type="radio" id="nao23" name="pergunta23" value="Não">
+        <label for="nao23">Não</label>
+        <input type="radio" id="alterado23" name="pergunta23" value="Alterado">
+        <label for="alterado23">Alterado</label><br><br>
+        
+        <h3>Há uma atividade principal sendo descrita?</h3>
+        <input type="radio" id="sim24" name="pergunta24" value="Sim"  >
+        <label for="sim24">Sim</label>
+        <input type="radio" id="nao24" name="pergunta24" value="Não">
+        <label for="nao24">Não</label>
+        <input type="radio" id="alterado24" name="pergunta24" value="Alterado">
+        <label for="alterado24">Alterado</label><br><br>
+        <h3>Informações adicionais</h3>
+<textarea id="informacoes_adicionais5" name="informacoes_adicionais5" rows="4" cols="50" placeholder="Digite suas informações adicionais aqui..."></textarea><br><br>
+
+        <h2> Orientador </h2>
+        <h3>Possui simulação/orientador de crédito?</h3>
+        <input type="radio" id="sim25" name="pergunta25" value="Sim"  >
+        <label for="sim25">Sim</label>
+        <input type="radio" id="nao25" name="pergunta25" value="Não">
+        <label for="nao25">Não</label>
+        <input type="radio" id="alterado25" name="pergunta25" value="Alterado">
+        <label for="alterado25">Alterado</label><br><br>
+        <h3>Informações adicionais</h3>
+<textarea id="informacoes_adicionais6" name="informacoes_adicionais6" rows="4" cols="50" placeholder="Digite suas informações adicionais aqui..."></textarea><br><br>
+        
+        <h2> Sobre os equipamentos </h2>
+        <h3>São novos e têm CFI?</h3>
+        <input type="radio" id="sim26" name="pergunta26" value="Sim"  >
+        <label for="sim26">Sim</label>
+        <input type="radio" id="nao26" name="pergunta26" value="Não">
+        <label for="nao26">Não</label>
+        <input type="radio" id="alterado26" name="pergunta26" value="Alterado">
+        <label for="alterado26">Alterado</label><br><br>
+        <h3>Informações adicionais</h3>
+<textarea id="informacoes_adicionais7" name="informacoes_adicionais7" rows="4" cols="50" placeholder="Digite suas informações adicionais aqui..."></textarea><br><br>
+        <h2> Digiagro </h2>
+        <h3>As glebas estão cadastradas com os CARs anexados?</h3>
+        <input type="radio" id="sim27" name="pergunta27" value="Sim"  >
+        <label for="sim27">Sim</label>
+        <input type="radio" id="nao27" name="pergunta27" value="Não">
+        <label for="nao27">Não</label>
+        <input type="radio" id="alterado27" name="pergunta27" value="Alterado">
+        <label for="alterado27">Alterado</label><br><br>
+        
+        <h3>As glebas têm a sobreposição necessária?</h3>
+        <input type="radio" id="sim28" name="pergunta28" value="Sim"  >
+        <label for="sim28">Sim</label>
+        <input type="radio" id="nao28" name="pergunta28" value="Não">
+        <label for="nao28">Não</label>
+        <input type="radio" id="alterado28" name="pergunta28" value="Alterado">
+        <label for="alterado28">Alterado</label><br><br>
+        <h3>Informações adicionais</h3>
+<textarea id="informacoes_adicionais8" name="informacoes_adicionais8" rows="4" cols="50" placeholder="Digite suas informações adicionais aqui..."></textarea><br><br>
+        <h2> MUA </h2>
+        <h3>Cor/etnia preenchido?</h3>
+        <input type="radio" id="sim29" name="pergunta29" value="Sim"  >
+        <label for="sim29">Sim</label>
+        <input type="radio" id="nao29" name="pergunta29" value="Não">
+        <label for="nao29">Não</label>
+        <input type="radio" id="alterado29" name="pergunta29" value="Alterado">
+        <label for="alterado29">Alterado</label><br><br>
+        
+        <h3>Ocupação principal vinculada ao agronegócio/pecuária?</h3>
+        <input type="radio" id="sim30" name="pergunta30" value="Sim"  >
+        <label for="sim30">Sim</label>
+        <input type="radio" id="nao30" name="pergunta30" value="Não">
+        <label for="nao30">Não</label>
+        <input type="radio" id="alterado30" name="pergunta30" value="Alterado">
+        <label for="alterado30">Alterado</label><br><br>
+        
+        <h3>CNAE preenchido vinculado ao que o associado produz?</h3>
+        <input type="radio" id="sim31" name="pergunta31" value="Sim"  >
+        <label for="sim31">Sim</label>
+        <input type="radio" id="nao31" name="pergunta31" value="Não">
+        <label for="nao31">Não</label>
+        <input type="radio" id="alterado31" name="pergunta31" value="Alterado">
+        <label for="alterado31">Alterado</label><br><br>
+        <h3>Informações adicionais</h3>
+<textarea id="informacoes_adicionais9" name="informacoes_adicionais9" rows="4" cols="50" placeholder="Digite suas informações adicionais aqui..."></textarea><br><br>
+   
+<button type="submit">Enviar</button>
+</form>
+</body>
+</html>

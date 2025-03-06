@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Proposta</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #007BFF;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #0056b3;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        strong {
+            color: #007BFF;
+        }
+
+        .yes {
+            color: green;
+        }
+
+        .no {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Resultado da Proposta</h1>
+
+    <!-- Dados da Proposta -->
+<section class="section">
+    <h2 class="section-title">Dados da Proposta</h2>
+    
+    <p><strong>Periodicidade Anual:</strong> 
+        <span class="{{ 'yes' if proposta_data['periodicidade_anual'] == 'Sim' else 'no' }}">
+            {{ proposta_data['periodicidade_anual'] }}
+        </span>
+        {% if proposta_data['periodicidade_anual'] == 'Sim' %}
+            <em>(O máximo de parcelas deve ser 8, verificar junto com simulador de crédito)</em>
+        {% endif %}
+    </p>
+    
+    <p><strong>Periodicidade Mensal:</strong> 
+        <span class="{{ 'yes' if proposta_data['periodicidade_mensal'] == 'Sim' else 'no' }}">
+            {{ proposta_data['periodicidade_mensal'] }}
+        </span>
+        {% if proposta_data['periodicidade_mensal'] == 'Sim' %}
+            <em>(O máximo de parcelas deve ser 96, verificar junto com simulador de crédito)</em>
+        {% endif %}
+    </p>
+    
+    <p><strong>Cálculo de Parcelas:</strong> 
+        <span class="{{ 'yes' if proposta_data['calculo_parcelas'] == 'Sim' else 'no' }}">
+            {{ proposta_data['calculo_parcelas'] }}
+        </span>
+        {% if proposta_data['calculo_parcelas'] == 'Não' %}
+            <em>(Cálculo das parcelas deve estar preenchido pela agência.)</em>
+        {% endif %}
+    </p>
+    
+    <p><strong>Taxa pré-fixada:</strong> 
+        <span class="{{ 'yes' if proposta_data['taxa_prefixada'] == 'Sim' else 'no' }}">
+            {{ proposta_data['taxa_prefixada'] }}
+        </span>
+        {% if proposta_data['taxa_prefixada'] == 'Não' %}
+        <em>(Podemos modificar para Pré-fixada.)</em>
+    {% endif %}
+    </p>
+    
+    <p><strong>Taxa 5%:</strong> 
+        <span class="{{ 'yes' if proposta_data['taxa_5'] == 'Sim' else 'no' }}">
+            {{ proposta_data['taxa_5'] }}
+        </span>
+        {% if proposta_data['taxa_5'] == 'Não' %}
+        <em>(Podemos modificar para 5%.)</em>
+    {% endif %}
+    </p>
+    
+    <p><strong>Seguro prestamista:</strong> 
+        <span class="{{ 'yes' if proposta_data['seguro_prestamista'] == 'Sim' else 'no' }}">
+            {{ proposta_data['seguro_prestamista'] }}
+        </span>
+        {% if proposta_data['seguro_prestamista'] == 'Não' %}
+            <em>(Podemos modificar para Capital Fixo nesse caso.)</em>
+        {% endif %}
+    </p>
+    
+    <p><strong>Possui avalistas:</strong> 
+        <span class="{{ 'yes' if proposta_data['possui_avalistas'] == 'Sim' else 'no' }}">
+            {{ proposta_data['possui_avalistas'] }}
+        </span>
+        {% if proposta_data['possui_avalistas'] == 'Não' %}
+        <em>(É necessário a inclusão de aval ou documento específico que comprove o contrário)</em>
+    {% endif %}
+    {% if proposta_data['possui_avalistas'] == 'Sim' %}
+    <em>(Verificar se possui cônjuge através do MUA para pedir adição como aval.)</em>
+{% endif %}
+    </p>
+    
+    <p><strong>Aval com cadastro atualizado para 2025?</strong> 
+        <span class="{{ 'yes' if proposta_data['cadastro_avalistas_atualizado'] == 'Sim' else 'no' }}">
+            {{ proposta_data['cadastro_avalistas_atualizado'] }}
+        </span>
+        {% if proposta_data['cadastro_avalistas_atualizado'] == 'Não' %}
+        <em>(Favor anexar comprovante de renda dos avais com renda efetiva 2024 e prevista 2025.)</em>
+    {% endif %}
+    </p>
+    
+    <p><strong>Informações adicionais:</strong> 
+        {{ proposta_data['informacoes_adicionais1'] or 'Nenhuma' }}
+    </p>
+</section>
+
+        <!-- Painel do Beneficiário -->
+        <section class="section">
+            <h2 class="section-title">Painel do Beneficiário</h2>
+            <p><strong>DAP válida:</strong> <span class="{{ 'yes' if proposta_data['dap_valida'] == 'Sim' else 'no' }}">{{ proposta_data['dap_valida'] }}</span>
+                {% if proposta_data['dap_valida'] == 'Não' %}
+                <em>(DAP inválida ou inexistente, favor ajustar.)</em>
+            {% endif %}</p>
+            <p><strong>Até 4 módulos fiscais:</strong> <span class="{{ 'yes' if proposta_data['modulos_fiscais'] == 'Sim' else 'no' }}">{{ proposta_data['modulos_fiscais'] }}</span>
+                {% if proposta_data['modulos_fiscais'] == 'Não' %}
+                <em>(Limite PRONAF para módulos fiscais excedido.)</em>
+            {% endif %}</p>
+            <p><strong>Renda menor que 500 mil:</strong> <span class="{{ 'yes' if proposta_data['renda_menor_500k'] == 'Sim' else 'no' }}">{{ proposta_data['renda_menor_500k'] }}</span></p>
+            {% if proposta_data['renda_menor_500k'] == 'Sim' %}
+            <em>(Limite PRONAF para renda do associado foi excedido.)</em>
+        {% endif %}</p>
+            <p><strong>Precisa e tem parecer negocial:</strong> <span class="{{ 'yes' if proposta_data['parecer_negocial'] == 'Sim' else 'no' }}">{{ proposta_data['parecer_negocial'] }}</span></p>
+            {% if proposta_data['parecer_negocial'] == 'Não' %}
+            <em>(Favor preencher parecer negocial preenchido, modelo anexado ao lado.)</em>
+        {% endif %}</p>
+            <p><strong>Cadastro atualizado em 2025:</strong> <span class="{{ 'yes' if proposta_data['cadastro_atualizado_2025'] == 'Sim' else 'no' }}">{{ proposta_data['cadastro_atualizado_2025'] }}</span></p>
+            {% if proposta_data['cadastro_atualizado_2025'] == 'Não' %}
+            <em>(Por gentileza, anexar RPR do produtor com renda efetiva 2024 e prevista 2025.)</em>
+        {% endif %}</p>
+            <p><strong>Informações adicionais:</strong> {{ proposta_data['informacoes_adicionais2'] or 'Nenhuma' }}</p>
+        </section>
+
+        <!-- Áreas Beneficiadas -->
+        <section class="section">
+            <h2 class="section-title">Áreas Beneficiadas</h2>
+            <p><strong>As matrículas estão sendo espelhadas no MUA:</strong> <span class="{{ 'yes' if proposta_data['matriculas_espelhadas_mua'] == 'Sim' else 'no' }}">{{ proposta_data['matriculas_espelhadas_mua'] }}</span></p>
+            {% if proposta_data['matriculas_espelhadas_mua'] == 'Não' %}
+            <em>(Necessário verificar se veio a documentação referente às MATR para cadastrar os imóveis no MUA.)</em>
+        {% endif %}</p>
+            <p><strong>A área beneficiada é menor ou igual no MUA:</strong> <span class="{{ 'yes' if proposta_data['area_menor_igual_mua'] == 'Sim' else 'no' }}">{{ proposta_data['area_menor_igual_mua'] }}</span></p>
+            {% if proposta_data['area_menor_igual_mua'] == 'Não' %}
+            <em>(Verificar, caso erro seja no digiagro é possível editar a área correspondente ao PROTEC.)</em>
+        {% endif %}</p>
+            <p><strong>Alguma matrícula é arrendada:</strong> <span class="{{ 'yes' if proposta_data['matricula_arrendada'] == 'Sim' else 'no' }}">{{ proposta_data['matricula_arrendada'] }}</span></p>
+            {% if proposta_data['matricula_arrendada'] == 'Sim' %}
+            <em>(Obrigatório ter anexado documento de arrendamento com data de vencimento superior ao fim da proposta.)</em>
+        {% endif %}</p>
+            <p><strong>Informações adicionais:</strong> {{ proposta_data['informacoes_adicionais3'] or 'Nenhuma' }}</p>
+        </section>
+
+        <!-- Documentação -->
+        <section class="section">
+            <h2 class="section-title">Documentação</h2>
+            <p><strong>CARs presentes:</strong> <span class="{{ 'yes' if proposta_data['car_presentes'] == 'Sim' else 'no' }}">{{ proposta_data['car_presentes'] }}</span></p>
+            {% if proposta_data['matricula_arrendada'] == 'Não' %}
+            <em>(Necessário ter anexos CARs referentes às MATR beneficiadas.)</em>
+        {% endif %}</p>
+            <p><strong>Área consolidada zerada:</strong> <span class="{{ 'yes' if proposta_data['area_consolidada_zerada'] == 'Sim' else 'no' }}">{{ proposta_data['area_consolidada_zerada'] }}</span></p>
+            {% if proposta_data['area_consolidada_zerada'] == 'Sim' %}
+            <em>(Necessário anexar CAR que possua área superior ou igual às áreas beneficiadas dele.)</em>
+        {% endif %}</p>
+            <p><strong>Área consolidada menor:</strong> <span class="{{ 'yes' if proposta_data['area_consolidada_menor'] == 'Sim' else 'no' }}">{{ proposta_data['area_consolidada_menor'] }}</span></p>
+            {% if proposta_data['area_consolidada_menor'] == 'Sim' %}
+            <em>(Necessário anexar CAR que possua área superior ou igual às áreas beneficiadas dele.)</em>
+        {% endif %}</p>
+            <p><strong>Informações adicionais:</strong> {{ proposta_data['informacoes_adicionais4'] or 'Nenhuma' }}</p>
+        </section>
+
+        <!-- CND -->
+        <section class="section">
+            <h2 class="section-title">CND</h2>
+            <p><strong>CND válida:</strong> <span class="{{ 'yes' if proposta_data['cnd_valida'] == 'Sim' else 'no' }}">{{ proposta_data['cnd_valida'] }}</span></p>
+            {% if proposta_data['cnd_valida'] == 'Sim' %}
+            <em>(Necessário anexar CND com validade mínima de 45 dias em nome e CPF do associado.)</em>
+        {% endif %}</p>
+            <p><strong>Informações adicionais:</strong> {{ proposta_data['informacoes_adicionais5'] or 'Nenhuma' }}</p>
+        </section>
+
+        <!-- Protec -->
+        <section class="section">
+            <h2 class="section-title">Protec</h2>
+            <p><strong>Nome do associado:</strong> {{ proposta_data['nome_associado'] }}</p>
+            {% if proposta_data['nome_associado'] == 'Não' %}
+            <em>(Protec não é obrigatório caso venha orçamento.)</em>
+        {% endif %}</p>
+            <p><strong>Áreas beneficiadas Digiagro:</strong> <span class="{{ 'yes' if proposta_data['areas_beneficiadas_digiagro'] == 'Sim' else 'no' }}">{{ proposta_data['areas_beneficiadas_digiagro'] }}</span></p>
+            {% if proposta_data['areas_beneficiadas_digiagro'] == 'Não' %}
+            <em>(Áreas beneficiadas devem ser as mesmas do digiagro.)</em>
+        {% endif %}</p>
+            <p><strong>Operação traz melhorias:</strong> <span class="{{ 'yes' if proposta_data['operacao_traz_melhorias'] == 'Sim' else 'no' }}">{{ proposta_data['operacao_traz_melhorias'] }}</span></p>
+            {% if proposta_data['operacao_traz_melhorias'] == 'Não' %}
+            <em>(Necessário descrever se atividade traz melhorias para a propriedade e para o produtor)</em>
+        {% endif %}</p>
+            <p><strong>Atividade principal descrita:</strong> <span class="{{ 'yes' if proposta_data['atividade_principal_descrita'] == 'Sim' else 'no' }}">{{ proposta_data['atividade_principal_descrita'] }}</span></p>
+            {% if proposta_data['atividade_principal_descrita'] == 'Não' %}
+            <em>(Necessário descrever atividade principal do associado.)</em>
+        {% endif %}</p>
+            <p><strong>Informações adicionais:</strong> {{ proposta_data['informacoes_adicionais6'] or 'Nenhuma' }}</p>
+        </section>
+
+        <!-- Equipamentos -->
+        <section class="section">
+            <h2 class="section-title">Equipamentos</h2>
+            <p><strong>Equipamentos novos CFI:</strong> <span class="{{ 'yes' if proposta_data['equipamentos_novos_cfi'] == 'Sim' else 'no' }}">{{ proposta_data['equipamentos_novos_cfi'] }}</span></p>
+            {% if proposta_data['equipamentos_novos_cfi'] == 'Sim' %}
+            <em>(Equipamentos Novos com CFI deve vir orçamento apenas, ou projeto + orçamento. Financiamento de até 250mil)</em>
+        {% endif %}</p>
+        {% if proposta_data['equipamentos_novos_cfi'] == 'Não' %}
+        <em>(Equipamentos usados deve vir orçamento OU projeto. Financiamento de até 160mil. Deve vir também lauda de avaliação com "bom estado" e valor, além de forma de comprovação financeira E nota fiscal pretérita)</em>
+    {% endif %}</p>
+            <p><strong>Informações adicionais:</strong> {{ proposta_data['informacoes_adicionais7'] or 'Nenhuma' }}</p>
+        </section>
+
+        <!-- Digiagro -->
+        <section class="section">
+            <h2 class="section-title">Digiagro</h2>
+            <p><strong>Glebas CAR anexados:</strong> <span class="{{ 'yes' if proposta_data['glebas_car_anexados'] == 'Sim' else 'no' }}">{{ proposta_data['glebas_car_anexados'] }}</span></p>
+            {% if proposta_data['glebas_car_anexados'] == 'Não' %}
+            <em>(Pedir ajuste do CROQUI no geocrédito)</em>
+        {% endif %}</p>
+            <p><strong>Glebas sobreposição necessária:</strong> <span class="{{ 'yes' if proposta_data['glebas_sobreposicao_necessaria'] == 'Sim' else 'no' }}">{{ proposta_data['glebas_sobreposicao_necessaria'] }}</span></p>
+            {% if proposta_data['glebas_sobreposicao_necessaria'] == 'Não' %}
+            <em>(Pedir ajuste de sobreposição mínima necessária.)</em>
+        {% endif %}</p>
+            <p><strong>Informações adicionais:</strong> {{ proposta_data['informacoes_adicionais8'] or 'Nenhuma' }}</p>
+        </section>
+
+        <!-- MUA -->
+        <section class="section">
+            <h2 class="section-title">MUA</h2>
+            <p><strong>Cor e etnia preenchido:</strong> <span class="{{ 'yes' if proposta_data['cor_etnia_preenchido'] == 'Sim' else 'no' }}">{{ proposta_data['cor_etnia_preenchido'] }}</span></p>
+            {% if proposta_data['cor_etnia_preenchido'] == 'Não' %}
+            <em>(Preencher cor/etnia do associado.)</em>
+        {% endif %}</p>
+            <p><strong>Ocupação principal agropecuária:</strong> <span class="{{ 'yes' if proposta_data['ocupacao_principal_agropecuaria'] == 'Sim' else 'no' }}">{{ proposta_data['ocupacao_principal_agropecuaria'] }}</span></p>
+            {% if proposta_data['ocupacao_principal_agropecuaria'] == 'Não' %}
+            <em>(Preencher ocupação principal vinculada à agropecuária.)</em>
+        {% endif %}</p>
+            <p><strong>CNAE preenchido:</strong> <span class="{{ 'yes' if proposta_data['cnae_preenchido'] == 'Sim' else 'no' }}">{{ proposta_data['cnae_preenchido'] }}</span></p>
+            {% if proposta_data['cnae_preenchido'] == 'Não' %}
+            <em>(Preencher CNAE vinculado à agropecuária.)</em>
+        {% endif %}</p>
+            <p><strong>Informações adicionais:</strong> {{ proposta_data['informacoes_adicionais9'] or 'Nenhuma' }}</p>
+        </section>
+    </div>
+</body>
+</html>
