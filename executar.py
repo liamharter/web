@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+# Página inicial onde o formulário é exibido
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
@@ -64,11 +65,15 @@ def index():
             'informacoes_adicionais9': request.form.get('informacoes_adicionais9'),
         }
         
-        # Exemplo de como processar e exibir os dados coletados
+        # Após coletar os dados, renderize a página de resultados com os dados coletados
         return render_template('resultado.html', proposta_data=proposta_data)
 
     return render_template('index.html')
 
+# Página para exibir os resultados
+@app.route('/resultado', methods=['GET'])
+def resultado():
+    return render_template('resultado.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
